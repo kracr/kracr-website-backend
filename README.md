@@ -1,2 +1,6 @@
-# kracr-website-backend
-Files related to the backend of the KRaCR lab's website are here
+### contact admin for .env
+### paste .env in main folder
+### run below commands in terminal
+### npm install
+### nodemon app.js
+### backend active at http://localhost:5000 
