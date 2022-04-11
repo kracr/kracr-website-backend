@@ -16,6 +16,14 @@ const projectSchema = new Schema({
     category: {
         type: String
     },
+    sections: [{
+        subHeading : String,
+        description: String,
+        images: [{
+            type: String
+        }
+        ]
+    }],
     images: [{
         type: String
     }],
