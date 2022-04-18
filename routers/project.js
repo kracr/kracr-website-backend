@@ -34,6 +34,16 @@ projectRouter.post('/add',async(req,res)=>{
     }
 });
 
+projectRouter.delete('/:id',async(req,res)=>{
+    try {
+        let project = await Project.deleteOne({ _id: req.params.id });
+        return res.status(200).send({ message: "deleted" });
+    }
+    catch {
+        return res.status(401).send({ message: "some error" });
+    }
+});
+
 projectRouter.post('/import',(req,res)=>{
     console.log(req.body);
     req.body.map((i)=>{

@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const projectRouter = require('./routers/project');
 const newsRouter = require('./routers/news');
 const publicationsRouter = require('./routers/publications');
+const joinUsRouter = require('./routers/joinUs');
 const teamRouter = require('./routers/team');
 require('dotenv/config');
 
@@ -24,6 +25,7 @@ app.use('/project', projectRouter);
 app.use('/news', newsRouter);
 app.use('/publications', publicationsRouter);
 app.use('/team', teamRouter);
+app.use('/joinus',joinUsRouter);
 
 app.listen(process.env.PORT || 5000, () => {
     console.log("Currently Connected to port 5000");
