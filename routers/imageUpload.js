@@ -9,7 +9,7 @@ require('dotenv/config');
 var fs = require('fs');
 var request = require('request');
 const Team = require('../modals/team');
-
+var FormData = require('form-data');
 var download = function(uri, filename, callback){
   request.head(uri, function(err, res, body){
     console.log('content-type:', res.headers['content-type']);
@@ -33,6 +33,8 @@ const upload = multer({
 });
 
 imageRouter.post('/upload',upload.single('image'),(req,res)=>{
+    // console.log(req);
+    console.log("check");
     res.send({name:req.file.filename.substring(0,req.file.filename.length-4)});
 });
 
@@ -41,39 +43,42 @@ imageRouter.get('/:id',(req,res)=>{
     res.sendFile(`/${req.params.id}.jpg`,{root:process.env.imageDir});
 });
 
-imageRouter.get('/test/test',(req,res)=>{
+// imageRouter.get('/test/test',(req,res)=>{
 
-    Team.find({}).then((team)=>{
-        console.log(team);
-        team.forEach((i,index)=>{
-            if(i.ImageURL){
-            console.log("url",i.ImageURL);
-            download(i.ImageURL, `${i.Name}.jpg`, async function(){
-                var bodyFormData = new URLSearchParams();
-                console.log("download done");
-                bodyFormData.append('image',fs.createReadStream(`A:/Semester 6/kracr-website-backend/${i.Name}.jpg`)); 
-                axios({
-                    method: "post",
-                    url: "http://localhost:5000/image/upload",
-                    data: bodyFormData,
-                   
-                  }).then(async(data)=>{
-                      console.log("upload done");
-                        await Team.findByIdAndUpdate(i._id,{$set:{ImageURL:data.name}});
-                  });
-            });
-        }
-        else{
-            console.log("no image",i);
-        }
-        });
+//     Team.find({}).then((team)=>{
+//         console.log(team);
+//         team.forEach((i,index)=>{
+//             if(i.ImageURL){
+//             // console.log("url",i.ImageURL);
+            
+//             var bodyFormData = new FormData();
+//             console.log("download done");
+//             // console.log(fs.createReadStream(`A:/Semester 6/kracr-website-backend/${i.Name}.jpg`));
+//             bodyFormData.append('image',fs.createReadStream(`A:/Semester 6/kracr-website-backend/${i.Name}.jpg`)); 
+//             // console.log(bodyFormData);
+//             axios.post('http://localhost:5000/image/upload', bodyFormData,{headers: {
+//                 ...bodyFormData.getHeaders(),
+//               }}).then(async(res)=>{
+//                     console.log("upload done");
+//                     console.log(res.data);
+//                     Team.findByIdAndUpdate(i._id,{$set:{ImageURL:res.data.name}},{new:true}).then((okay)=>{
+//                         console.log("updated");
+//                         console.log(okay);
+//                     });
+//                 });
+            
+//         }
+//         else{
+//             console.log("no image",i);
+//         }
+//         });
 
-        // download('https://www.google.com/images/srpr/logo3w.png', 'check.png', function(){
+//         // download('https://www.google.com/images/srpr/logo3w.png', 'check.png', function(){
 
-        // });
-    })
+//         // });
+//     })
     
-    // res.send({done:"done"});
-})
+//     // res.send({done:"done"});
+// })
 
 module.exports = imageRouter;
