@@ -51,21 +51,28 @@ imageRouter.get('/:id',(req,res)=>{
 //             if(i.ImageURL){
 //             // console.log("url",i.ImageURL);
             
-//             var bodyFormData = new FormData();
-//             console.log("download done");
-//             // console.log(fs.createReadStream(`A:/Semester 6/kracr-website-backend/${i.Name}.jpg`));
-//             bodyFormData.append('image',fs.createReadStream(`A:/Semester 6/kracr-website-backend/${i.Name}.jpg`)); 
-//             // console.log(bodyFormData);
-//             axios.post('http://localhost:5000/image/upload', bodyFormData,{headers: {
-//                 ...bodyFormData.getHeaders(),
-//               }}).then(async(res)=>{
-//                     console.log("upload done");
-//                     console.log(res.data);
-//                     Team.findByIdAndUpdate(i._id,{$set:{ImageURL:res.data.name}},{new:true}).then((okay)=>{
-//                         console.log("updated");
-//                         console.log(okay);
-//                     });
-//                 });
+//             download(i.ImageURL,i.Name+".jpg",function(){
+//               var bodyFormData = new FormData();
+//               console.log("download done");
+//               // console.log(fs.createReadStream(`A:/Semester 6/kracr-website-backend/${i.Name}.jpg`));
+//               bodyFormData.append('image',fs.createReadStream(`C:/Users/Utkarsh/OneDrive/Documents/Semester 7/IP/kracr-website-backend/${i.Name}.jpg`)); 
+//               // console.log(bodyFormData);
+      
+//               axios.post('http://localhost:5000/image/upload', bodyFormData,{headers: {
+//                   ...bodyFormData.getHeaders(),
+//                 }}).then(async(res)=>{
+//                       console.log("upload done");
+//                       console.log(res.data);
+//                       Team.findByIdAndUpdate(i._id,{$set:{ImageURL:res.data.name}},{new:true}).then((okay)=>{
+//                           console.log("updated");
+//                           console.log(okay);
+//                       });
+//                   }).catch((err)=>{
+//                     console.log("error for ",i.Name);
+//                     console.log(err);
+//                   });
+//             });
+            
             
 //         }
 //         else{
