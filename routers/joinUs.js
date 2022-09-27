@@ -27,7 +27,7 @@ joinUsRouter.post('/add', async (req, res) => {
     })
 });
 
-projectRouter.delete('/:id',async(req,res)=>{
+joinUsRouter.delete('/:id',async(req,res)=>{
     try {
         let project = await joinUs.deleteOne({ _id: req.params.id });
         return res.status(200).send({ message: "deleted" });

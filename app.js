@@ -17,7 +17,11 @@ connect.then((db) => {
 
 
 var app = express();
-app.use(cors());
+app.use(cors(
+    {
+        origin: ['https://kracr.iiitd.edu.in', 'http://localhost:3000']
+    }
+));
 app.use(bodyParser.json());
 // app.use('/', (req, res) => {
 //     return res.send("hello world");

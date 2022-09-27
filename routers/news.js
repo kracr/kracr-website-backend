@@ -40,7 +40,7 @@ newsRouter.post('/import', (req, res) => {
     }
 });
 
-projectRouter.delete('/:id',async(req,res)=>{
+newsRouter.delete('/:id',async(req,res)=>{
     try {
         let project = await News.deleteOne({ _id: req.params.id });
         return res.status(200).send({ message: "deleted" });

@@ -38,7 +38,7 @@ teamRouter.post('/import', (req, res) => {
     }
 });
 
-projectRouter.delete('/:id',async(req,res)=>{
+teamRouter.delete('/:id',async(req,res)=>{
     try {
         let project = await Team.deleteOne({ _id: req.params.id });
         return res.status(200).send({ message: "deleted" });

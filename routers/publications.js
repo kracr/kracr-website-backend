@@ -15,7 +15,7 @@ publicationsRouter.get("/", async (req, res) => {
     }
 });
 
-projectRouter.delete('/:id',async(req,res)=>{
+publicationsRouter.delete('/:id',async(req,res)=>{
     try {
         let project = await Publications.deleteOne({ _id: req.params.id });
         return res.status(200).send({ message: "deleted" });
