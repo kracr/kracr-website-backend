@@ -15,6 +15,15 @@ publicationsRouter.get("/", async (req, res) => {
     }
 });
 
+projectRouter.delete('/:id',async(req,res)=>{
+    try {
+        let project = await Publications.deleteOne({ _id: req.params.id });
+        return res.status(200).send({ message: "deleted" });
+    }
+    catch {
+        return res.status(401).send({ message: "some error" });
+    }
+});
 
 publicationsRouter.post('/add', async (req, res) => {
     try {
