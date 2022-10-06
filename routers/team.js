@@ -38,6 +38,15 @@ teamRouter.post('/import', (req, res) => {
     }
 });
 
+teamRouter.post("/update/:id",async(req,res)=>{
+    try {
+        let team = await Team.findByIdAndUpdate(req.params.id,{$set:{Position:req.body.Position}});
+        return res.status(200).send(team);
+    }
+    catch {
+        return res.status(401).send({ message: "some error" });
+    }
+})
 teamRouter.delete('/:id',async(req,res)=>{
     try {
         let project = await Team.deleteOne({ _id: req.params.id });
