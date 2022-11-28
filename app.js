@@ -8,6 +8,7 @@ const publicationsRouter = require('./routers/publications');
 const joinUsRouter = require('./routers/joinUs');
 const teamRouter = require('./routers/team');
 const imageRouter = require('./routers/imageUpload');
+const blogRouter = require('./routers/blogRouter');
 require('dotenv/config');
 
 const connect = mongoose.connect(process.env.mongoUrl, { useNewUrlParser: true, keepAlive: true, useUnifiedTopology: true });
@@ -32,6 +33,7 @@ app.use('/publications', publicationsRouter);
 app.use('/team', teamRouter);
 app.use('/joinus',joinUsRouter);
 app.use('/image',imageRouter);
+app.use('/blog',blogRouter);
 
 
 app.listen(process.env.PORT || 5000, () => {

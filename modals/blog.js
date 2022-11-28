@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const projectSchema = new Schema({
+const blogSchema = new Schema({
     title: {
         type: String
     },
@@ -30,12 +30,6 @@ const projectSchema = new Schema({
     year : {
         type: Date
     },
-    githubUrl : {
-        type: String
-    },
-    publicationUrl : {
-        type: String
-    },
     htmlEmbedLink : {
         type: String
     }
@@ -43,5 +37,5 @@ const projectSchema = new Schema({
     timestamps: true
 });
 
-var Projects = mongoose.model('Projects', projectSchema);
-module.exports = Projects;
+var Blog = mongoose.model('Blog', blogSchema);
+module.exports = Blog;
