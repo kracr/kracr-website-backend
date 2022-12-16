@@ -38,7 +38,13 @@ const projectSchema = new Schema({
     },
     htmlEmbedLink : {
         type: String
-    }
+    },
+    links:[
+        {   
+            linkType: String,
+            link: String
+        }
+    ]
 },{
     timestamps: true
 });

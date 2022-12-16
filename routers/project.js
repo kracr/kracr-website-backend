@@ -34,6 +34,16 @@ projectRouter.post('/add',async(req,res)=>{
     }
 });
 
+projectRouter.put('/:id',async(req,res)=>{
+    try{
+        let project = await Project.findByIdAndUpdate(req.params.id,req.body);
+        return res.status(200).send(project);
+    }
+    catch {
+        return res.status(401).send({ message: "some error" });
+    }
+})
+
 projectRouter.delete('/:id',async(req,res)=>{
     try {
         let project = await Project.deleteOne({ _id: req.params.id });
